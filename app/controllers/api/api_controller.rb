@@ -25,7 +25,6 @@ class Api::ApiController < ApplicationController
     else
       return false
     end
-
   end
 
 end

@@ -3,10 +3,11 @@ require 'test_helper'
 feature "Schools" do
 
   describe "#index" do
-    it "return 200 when the user is valid" do
+    it "return the list of all schools" do
       get api_v1_schools_path, nil, {'HTTP_AUTHORIZATION' => 'valid_token'}
 
       assert_equal 200, last_response.status
+      assert_equal "hello", json_response['message']
     end
 
     it "returns 401 error if the user is not authentified" do

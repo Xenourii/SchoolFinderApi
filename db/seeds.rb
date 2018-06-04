@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create({
+User.create([{
     email: 'user@user.com',
     password: 'user1234',
     password_confirmation: 'user1234'
@@ -15,9 +15,9 @@ User.create({
     email: 'admin@admin.com',
     password: 'Passw0rd!',
     password_confirmation: 'Passw0rd!'
-  })
+  }])
 
-School.create({
+School.create([{
     name: "Pierre Termier",
     address: "23, rue des Alouettes",
     zip_code: "69003",
@@ -120,4 +120,4 @@ School.create({
     longitude: 4.832654700000035,
     student_number: 20,
     status: "public"
-  });
+  }]);

@@ -5,6 +5,7 @@ class Api::V1::SchoolsController < Api::ApiController
   param :headers, :boolean do
     param :HTTP_AUTHORIZATION, :boolean
   end
+  param :status, :undef
   error code: 401
   def index
     @schools = School.filter(params)
@@ -14,6 +15,9 @@ class Api::V1::SchoolsController < Api::ApiController
     @school = School.find(params[:id])
   end
 
+  # DOC GENERATED AUTOMATICALLY: REMOVE THIS LINE TO PREVENT REGENERATING NEXT TIME
+  api :POST, '/v1/schools', 'Create a school'
+  error code: 422
   def create
     @school = School.create(school_params)
 
@@ -33,6 +37,8 @@ class Api::V1::SchoolsController < Api::ApiController
     end
   end
 
+  # DOC GENERATED AUTOMATICALLY: REMOVE THIS LINE TO PREVENT REGENERATING NEXT TIME
+  api :DELETE, '/v1/schools/:id', 'Destroy a school'
   def destroy
     @school = School.find(params[:id])
     if(@school.destroy)

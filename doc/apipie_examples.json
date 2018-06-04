@@ -1,4 +1,88 @@
 {
+  "schools#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "school[name]=new+school",
+      "response_data": {
+        "school": {
+          "id": 659178195,
+          "name": "new school",
+          "address": null,
+          "zip_code": null,
+          "city": null,
+          "opening_hours": null,
+          "phone_number": null,
+          "email": null,
+          "latitude": 0.0,
+          "longitude": 0.0,
+          "student_number": null,
+          "status": null,
+          "created_at": "2018-06-04T14:23:46.640Z",
+          "updated_at": "2018-06-04T14:23:46.640Z"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "school[name]=",
+      "response_data": {
+        "success": false,
+        "errors": {
+          "name": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "schools#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/schools/1",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "school": {
+          "id": 1,
+          "name": "Ynov",
+          "address": "27, rue Raoul Servant",
+          "zip_code": "69000",
+          "city": "lyon",
+          "opening_hours": "De 9h à 17h",
+          "phone_number": "04 00 00 00 00",
+          "email": "contact@ynov.com",
+          "latitude": 45.7456831,
+          "longitude": 4.837593400000006,
+          "student_number": 200,
+          "status": "private",
+          "created_at": "2018-06-04T14:23:46.457Z",
+          "updated_at": "2018-06-04T14:23:46.457Z"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
   "schools#index": [
     {
       "verb": "GET",
@@ -6,12 +90,16 @@
       "versions": [
         "1.0"
       ],
-      "query": null,
+      "query": "headers[HTTP_AUTHORIZATION]=12345AZERTY",
       "request_data": null,
       "response_data": {
-        "success": true
+        "errors": [
+          {
+            "detail": "Access Denied"
+          }
+        ]
       },
-      "code": 200,
+      "code": 401,
       "show_in_doc": 1,
       "recorded": true
     },
@@ -24,13 +112,42 @@
       "query": null,
       "request_data": null,
       "response_data": {
-        "errors": [
+        "schools": [
           {
-            "detail": "Access Denied"
+            "id": 2,
+            "name": "Pierre Termier",
+            "address": "23, rue des Alouettes",
+            "zip_code": "69003",
+            "city": "Lyon",
+            "opening_hours": "De 8h à 18h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@pierretermier.com",
+            "latitude": 45.74157630000001,
+            "longitude": 4.8714741,
+            "student_number": 30,
+            "status": "public",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          },
+          {
+            "id": 1,
+            "name": "Ynov",
+            "address": "27, rue Raoul Servant",
+            "zip_code": "69000",
+            "city": "lyon",
+            "opening_hours": "De 9h à 17h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@ynov.com",
+            "latitude": 45.7456831,
+            "longitude": 4.837593400000006,
+            "student_number": 200,
+            "status": "private",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
           }
         ]
       },
-      "code": 401,
+      "code": 200,
       "show_in_doc": 0,
       "recorded": true
     },
@@ -40,7 +157,167 @@
       "versions": [
         "1.0"
       ],
-      "query": "headers[HTTP_AUTHORIZATION]=12345AZERTY",
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "schools": [
+          {
+            "id": 2,
+            "name": "Pierre Termier",
+            "address": "23, rue des Alouettes",
+            "zip_code": "69003",
+            "city": "Lyon",
+            "opening_hours": "De 8h à 18h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@pierretermier.com",
+            "latitude": 45.74157630000001,
+            "longitude": 4.8714741,
+            "student_number": 30,
+            "status": "public",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          },
+          {
+            "id": 1,
+            "name": "Ynov",
+            "address": "27, rue Raoul Servant",
+            "zip_code": "69000",
+            "city": "lyon",
+            "opening_hours": "De 9h à 17h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@ynov.com",
+            "latitude": 45.7456831,
+            "longitude": 4.837593400000006,
+            "student_number": 200,
+            "status": "private",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": "status=private",
+      "request_data": null,
+      "response_data": {
+        "schools": [
+          {
+            "id": 1,
+            "name": "Ynov",
+            "address": "27, rue Raoul Servant",
+            "zip_code": "69000",
+            "city": "lyon",
+            "opening_hours": "De 9h à 17h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@ynov.com",
+            "latitude": 45.7456831,
+            "longitude": 4.837593400000006,
+            "student_number": 200,
+            "status": "private",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "schools": [
+          {
+            "id": 2,
+            "name": "Pierre Termier",
+            "address": "23, rue des Alouettes",
+            "zip_code": "69003",
+            "city": "Lyon",
+            "opening_hours": "De 8h à 18h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@pierretermier.com",
+            "latitude": 45.74157630000001,
+            "longitude": 4.8714741,
+            "student_number": 30,
+            "status": "public",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          },
+          {
+            "id": 1,
+            "name": "Ynov",
+            "address": "27, rue Raoul Servant",
+            "zip_code": "69000",
+            "city": "lyon",
+            "opening_hours": "De 9h à 17h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@ynov.com",
+            "latitude": 45.7456831,
+            "longitude": 4.837593400000006,
+            "student_number": 200,
+            "status": "private",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": "status=public",
+      "request_data": null,
+      "response_data": {
+        "schools": [
+          {
+            "id": 2,
+            "name": "Pierre Termier",
+            "address": "23, rue des Alouettes",
+            "zip_code": "69003",
+            "city": "Lyon",
+            "opening_hours": "De 8h à 18h",
+            "phone_number": "04 00 00 00 00",
+            "email": "contact@pierretermier.com",
+            "latitude": 45.74157630000001,
+            "longitude": 4.8714741,
+            "student_number": 30,
+            "status": "public",
+            "created_at": "2018-06-04T14:23:46.457Z",
+            "updated_at": "2018-06-04T14:23:46.457Z"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/schools",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
       "request_data": null,
       "response_data": {
         "errors": [
@@ -65,7 +342,7 @@
       "request_data": "email=user_1%40domain.com&password=password1234",
       "response_data": {
         "success": true,
-        "auth_token": "f3453b37ddd1b91ca7267a0a08a04f39"
+        "auth_token": "9b2ed377569dc0e322f2b16fb37fb4c2"
       },
       "code": 200,
       "show_in_doc": 1,

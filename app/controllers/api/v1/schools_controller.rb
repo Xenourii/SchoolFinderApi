@@ -17,18 +17,27 @@ class Api::V1::SchoolsController < Api::ApiController
   def create
     @school = School.create(school_params)
 
-    if @school.error.any?
-      render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
+    if @school.errors.any?
+      #render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
+      render json: {success: false}.to_json, status: 422
     else
       render template: 'api/v1/schools/show', status: 201
     end
   end
 
+  def update
+    @school = School.find(params[:id])
+    if @school.update(school_params)
+      render template: 'api/v1/schools/show', status: 200
+    else
+      render json: {succes: false}.to_json, status: 422
+    end
+  end
+
   def destroy
-    school = School.find(params[:id])
-    if(school)
-      school.destroy
-      @school = school
+    @school = School.find(params[:id])
+    if(@school.destroy)
+      render template: 'api/v1/schools/show', status: 200
     else
       render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
     end

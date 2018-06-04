@@ -1,6 +1,8 @@
 class School < ApplicationRecord
-  def self.filter(params)
 
+  validates :name, presence: true
+
+  def self.filter(params)
     out = []
     if params[:status].blank?
       out = School.all

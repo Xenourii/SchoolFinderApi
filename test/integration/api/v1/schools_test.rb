@@ -53,13 +53,29 @@ feature "Schools" do
   end
 
   describe "#create" do
-    it "return 200 if when school is successfully created" do
-      post api_v1_schools_path, {school: {
-        name: "new school"
-        }}, {'HTTP_AUTHORIZATION' => 'valid_token'}
+    it "returns 200 if when school is successfully created" do
+      assert_difference "School.all.count" do
+        post api_v1_schools_path, {school: {
+          name: "new school"
+          }},
+          {'HTTP_AUTHORIZATION' => 'valid_token'}
 
-      assert_equal 200, last_response.status
-      assert_equal "new school", json_response['school']
+        assert_equal 201, last_response.status
+        assert_equal "new school", json_response['school']['name']
+      end
+    end
+
+    it "doesn't cerate a new school when no name given" do
+
+      assert_no_difference "School.all.count" do
+        post api_v1_schools_path, {school: {
+          name: ""
+          }},
+          {'HTTP_AUTHORIZATION' => 'valid_token'}
+
+        assert_equal 422, last_response.status
+      end
+
     end
   end
 

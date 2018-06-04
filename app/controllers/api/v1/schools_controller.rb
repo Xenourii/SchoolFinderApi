@@ -18,8 +18,7 @@ class Api::V1::SchoolsController < Api::ApiController
     @school = School.create(school_params)
 
     if @school.errors.any?
-      #render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
-      render json: {success: false}.to_json, status: 422
+      render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
     else
       render template: 'api/v1/schools/show', status: 201
     end

@@ -56,7 +56,7 @@ feature "Schools" do
     it "returns 200 if when school is successfully created" do
       assert_difference "School.all.count" do
         post api_v1_schools_path, {school: {
-          name: "new school"
+          name: "new school",
           }},
           {'HTTP_AUTHORIZATION' => 'valid_token'}
 
@@ -65,14 +65,14 @@ feature "Schools" do
       end
     end
 
-    it "doesn't cerate a new school when no name given" do
+    it "doesn't create a new school when no name given" do
 
       assert_no_difference "School.all.count" do
         post api_v1_schools_path, {school: {
           name: ""
           }},
           {'HTTP_AUTHORIZATION' => 'valid_token'}
-
+          puts json_response
         assert_equal 422, last_response.status
       end
 

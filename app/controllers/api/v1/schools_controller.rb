@@ -19,6 +19,8 @@ class Api::V1::SchoolsController < Api::ApiController
 
     if @school.error.any?
       render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
+    else
+      render template: 'api/v1/schools/show', status: 201
     end
   end
 
@@ -28,7 +30,26 @@ class Api::V1::SchoolsController < Api::ApiController
       school.destroy
       @school = school
     else
-      render json {success: false, errors: @school.errors.messages}.to_json, status: 422
+      render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
+    end
+  end
+
+  private
+
+  def school_params
+    params.require(:school).permit(
+      :name,
+      :address,
+      :city,
+      :zip_code,
+      :latitude,
+      :longitude,
+      :status,
+      :student_number,
+      :opening_hours,
+      :phone_number,
+      :email
+    )
   end
 
 end

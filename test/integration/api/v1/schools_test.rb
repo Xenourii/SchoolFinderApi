@@ -50,7 +50,17 @@ feature "Schools" do
   end
 
   describe "#show" do
+  end
 
+  describe "#create" do
+    it "return 200 if when school is successfully created" do
+      post api_v1_schools_path, {school: {
+        name: "new school"
+        }}, {'HTTP_AUTHORIZATION' => 'valid_token'}
+
+      assert_equal 200, last_response.status
+      assert_equal "new school", json_response['school']
+    end
   end
 
   describe "#destroy" do

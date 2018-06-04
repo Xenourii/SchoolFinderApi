@@ -1,6 +1,3 @@
-#json.message @message
-# => {'message': @message}
-
 json.schools @schools
 
 # json.schools @schools.each do |school|

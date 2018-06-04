@@ -18,8 +18,6 @@ feature "Autentication" do
 
       assert_equal 200, last_response.status
       assert_equal false, json_response['auth_token'].blank?
-
-      puts "--#{json_response['auth_token']}--"
     end
 
     it "not logs_in user with invalid email+password" do

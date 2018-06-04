@@ -33,7 +33,7 @@ class Api::V1::SchoolsController < Api::ApiController
     if @school.update(school_params)
       render template: 'api/v1/schools/show', status: 200
     else
-      render json: {succes: false}.to_json, status: 422
+      render json: {succes: false, errors: @school.errors.messages}.to_json, status: 422
     end
   end
 

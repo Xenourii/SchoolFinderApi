@@ -72,18 +72,35 @@ feature "Schools" do
           name: ""
           }},
           {'HTTP_AUTHORIZATION' => 'valid_token'}
-          puts json_response
+
         assert_equal 422, last_response.status
       end
+    end
+  end
 
+  describe "#update" do
+
+    it "returns 200 when school is successfully updated" do
+      assert_no_difference "School.all.count" do
+        patch api_v1_school_path(1), {school: {
+          name: "updatedName"
+          }},
+          {'HTTP_AUTHORIZATION' => 'valid_token'}
+
+          assert_equal 200, last_response.status
+          assert_equal "updatedName", json_response['school']['name']
+      end
     end
   end
 
   describe "#destroy" do
-    it "delete the school" do
-      delete api_v1_school_path(1), nil, {'HTTP_AUTHORIZATION' => 'valid_token'}
 
-      assert_equal 200, last_response.status
+    it "delete the school" do
+      assert_difference "School.all.count", -1 do
+        delete api_v1_school_path(1), nil, {'HTTP_AUTHORIZATION' => 'valid_token'}
+
+        assert_equal 200, last_response.status
+      end
     end
   end
 

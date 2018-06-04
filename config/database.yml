@@ -2,4 +2,21 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+
+development:
+  <<: *default
+  database: school_api_development
+  username: dev
+  password: devPassword
+
+test:
+  <<: *default
+  database: school_api_test
+  username: schoolTest
+  password: schoolTestPassword
+
+production:
+  <<: *default
+  database: school_api_production
+  username: school_api
+  password: schoolPassword

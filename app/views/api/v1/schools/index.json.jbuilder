@@ -1,2 +1,4 @@
-json.message @message
+#json.message @message
 # => {'message': @message}
+
+json.schools @schools

@@ -8,7 +8,7 @@ class Api::V1::SchoolsController < Api::ApiController
   error code: 401
   def index
     #render json: {success: true}
-    @message = "hello"
+    @schools = School.all
   end
 
 end

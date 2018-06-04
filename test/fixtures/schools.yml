@@ -1,4 +1,5 @@
 schoolOne:
+  id: 1
   name: "Ynov"
   address: "27, rue Raoul Servant"
   zip_code: "69000"
@@ -12,6 +13,7 @@ schoolOne:
   status: "private"
 
 schoolTwo:
+  id: 2
   name: "Pierre Termier"
   address: "12, rue des Alouettes"
   zip_code: "69000"

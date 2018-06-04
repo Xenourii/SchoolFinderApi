@@ -7,8 +7,15 @@ class Api::V1::SchoolsController < Api::ApiController
   end
   error code: 401
   def index
-    #render json: {success: true}
-    @schools = School.all
+    @schools = School.filter(params)
+  end
+
+  def show
+    @school = School.find(params[:id])
+  end
+
+  def destroy
+    School.find(params[:id]).destroy
   end
 
 end

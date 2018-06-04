@@ -1,0 +1,12 @@
+schoolOne:
+  name: "Ynov"
+  address: "27, rue Raoul Servant"
+  zip_code: "69000"
+  city: "lyon"
+  opening_hours: "De 9h à 17h"
+  phone_number: "04 00 00 00 00"
+  email: "contact@ynov.com"
+  latitude: "45.7456831"
+  longitude: "4.837593400000006"
+  student_number: "200"
+  status: "private"

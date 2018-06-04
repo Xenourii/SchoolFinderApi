@@ -91,6 +91,25 @@ feature "Schools" do
           assert_equal "updatedName", json_response['school']['name']
       end
     end
+
+    it "truncate the name school when the name length > 255" do
+
+      tooLongName260Char = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+        " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus" +
+        " et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis," +
+        " ultricies nec, pellentesque eu, pretium quis, sem."
+      expectedNameLength = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+        " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus" +
+        " et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis," +
+        " ultricies nec, pellentesque eu, pretium quis,"
+      patch api_v1_school_path(1), {school: {
+        name: tooLongName260Char
+        }},
+        {'HTTP_AUTHORIZATION' => 'valid_token'}
+
+        assert_equal 200, last_response.status
+        assert_equal expectedNameLength, json_response['school']['name']
+    end
   end
 
   describe "#destroy" do

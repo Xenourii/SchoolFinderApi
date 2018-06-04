@@ -14,8 +14,21 @@ class Api::V1::SchoolsController < Api::ApiController
     @school = School.find(params[:id])
   end
 
+  def create
+    @school = School.create(school_params)
+
+    if @school.error.any?
+      render json: {success: false, errors: @school.errors.messages}.to_json, status: 422
+    end
+  end
+
   def destroy
-    School.find(params[:id]).destroy
+    school = School.find(params[:id])
+    if(school)
+      school.destroy
+      @school = school
+    else
+      render json {success: false, errors: @school.errors.messages}.to_json, status: 422
   end
 
 end

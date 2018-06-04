@@ -8,7 +8,7 @@ class School < ApplicationRecord
       out = School.where(['status = ?', params[:status]])
     end
 
-    return out.order("name ASC")
+    return out.order(name: :asc)
   end
 
 end

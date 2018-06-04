@@ -15,9 +15,9 @@ schoolOne:
 schoolTwo:
   id: 2
   name: "Pierre Termier"
-  address: "12, rue des Alouettes"
-  zip_code: "69000"
-  city: "lyon"
+  address: "23, rue des Alouettes"
+  zip_code: "69003"
+  city: "Lyon"
   opening_hours: "De 8h à 18h"
   phone_number: "04 00 00 00 00"
   email: "contact@pierretermier.com"

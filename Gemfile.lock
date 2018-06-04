@@ -247,7 +247,7 @@ DEPENDENCIES
   minitest-profiler
   minitest-rails
   minitest-rails-capybara
-  pg
+  pg (>= 0.18, < 2.0)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails_12factor

@@ -51,9 +51,9 @@
       "recorded": true
     }
   ],
-  "schools#destroy": [
+  "schools#update": [
     {
-      "verb": "DELETE",
+      "verb": "PATCH",
       "path": "/api/v1/schools/1",
       "versions": [
         "1.0"

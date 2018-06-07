@@ -30,7 +30,6 @@ class Api::V1::SchoolsController < Api::ApiController
   end
 
   api :PATCH, '/v1/schools/:id', 'Mettre à jour une école'
-  api :PUT, '/v1/schools/:id', 'UMettre à jour une école'
   error code: 422
   def update
     @school = School.find(params[:id])
